@@ -1,0 +1,29 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 640px;
+    height: 360px;
+    overflow: hidden;
+}
+
+.container img{
+    width: 640px;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.container:hover img{
+    transform: scale(1.2) rotate(10deg);
+}

@@ -1,0 +1,19 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gradient-border{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    width: 300px;
+    height: 100px;
+    color: white;
+    border: 10px solid transparent;
+    background: linear-gradient(#2a2c34, #2a2c34) padding-box, linear-gradient(45deg, #FF52E5, #F6D242) border-box;
+    border-radius: 14px;
+}

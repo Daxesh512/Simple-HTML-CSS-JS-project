@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+	<button onclick="startConverting();">
+        <i class="fa fa-microphone btn btn-danger" aria-hidden="true"></i></button>
+    <br>
+    <br>
+    <textarea rows="3" cols="25" id="speech"></textarea>
+    <br>
+    <script>
+		var result = document.getElementById('speech');
+  
+		function startConverting () {
+            if('webkitSpeechRecognition' in window) {
+                var speechRecognizer = new webkitSpeechRecognition();
+                // speechRecognizer.lang = 'en-US';
+                speechRecognizer.lang = 'hi';
+                speechRecognizer.start();
+
+                speechRecognizer.onresult = function(event) {
+                    result.textContent = event.results[0][0].transcript;
+                    }
+                
+            }else {
+                result.textContent = 'Your browser is not supported. Please try different browser.';
+            }	
+    }
+	</script>
+</body>    
+</html>

@@ -1,0 +1,73 @@
+ body
+{
+    margin: 0;
+    padding: 0;
+}
+.container
+{
+    height: 100vh;
+    width: 100vw;
+    background-color: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logo
+{
+    background-color: #f05030;
+    width: 50vh;
+    height: 50vh;
+    border-radius: 4vh;
+    transform: rotate(45deg);
+}
+.line
+{
+    background-color: azure;
+}
+.circle
+{
+    background-color: azure;
+    height: 10vh;
+    width: 10vh;
+    border-radius: 5vh;
+}
+#longline
+{
+    top: 23vh;
+    left: 5vh;
+    height: 4vh;
+    width: 80%;
+    position: relative;
+    transform: rotate(45deg);
+}
+#shortline
+{
+    top: 6vh;
+    height: 4vh;
+    width: 35vh;
+    position: relative;
+}
+#circleone
+{
+    top: -1vh;
+    left: 7vh;
+    position: relative;
+}
+#circletwo
+{
+    top: -11vh;
+    left: 33vh;
+    position: relative;
+}
+#circlethree
+{
+    top: 5vh;
+    left: 33vh;
+    position: relative;
+}
+
+
+
+
+

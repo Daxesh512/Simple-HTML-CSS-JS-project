@@ -1,0 +1,116 @@
+ body
+{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ccc;
+}
+span.switcher
+{
+    position: relative;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    margin: 20px 0;
+}
+input
+{
+    appearance: none;
+    position: relative;
+    width: 200px;
+    height: 50px;
+    margin-top: -1px;
+    border-radius: 25px;
+    background-color: #1e1e1e;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Oswald' sans-serif;
+}
+input:before,
+input:after
+{
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+}
+input:before
+{
+    content: 'ON';
+    left: 25px;
+}
+input:after
+{
+    content: 'OFF';
+    right: 25px;
+}
+label
+{
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    border-radius: 20px;
+}
+.switcher-1 input
+{
+    transition: 0.25s -0.1sl
+}
+input:checked
+{
+    background-color: #fff;
+}
+input:checked:before
+{
+    color: #fff;
+    transition: color 0.5s 0.2s;
+}
+input:checked:after
+{
+    color: #ccc;
+    transition: color 0.5s;
+}
+input:checked + label
+{
+    left: 10px;
+    right: 100px;
+    background: #1e1e1e;
+    transition: left 0.5s, right 0.4s 0.2s;
+}
+input:not(:checked)
+{
+    background: #1e1e1e;
+    transition: background 0.5s -0.1s;
+}
+input:not(:checked):before
+{
+    color: #ccc;
+    transition: color 0.5s;
+}
+input:not(:checked):after
+{
+    color: #1e1e1e;
+    transition: color 0.5s 0.2s;
+}
+input:not(:checked) + label
+{
+    left: 100px;
+    right: 10px;
+    background: #fff;
+    transition: left 0.4s 0.2s, right 0.5s, background 0.35s -0.1s;
+}
+
+
+
+
+
+
+
+
+
+

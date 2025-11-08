@@ -1,0 +1,96 @@
+<!doctype html class="my-2 rounded-full h-10 w-[16rem] px-4">
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome Icons  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>Show-Hide Password - @code.scientist</title>
+</head>
+
+<style>
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background-color: #111827;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid deepskyblue;
+        padding: 40px;
+        border-radius: 20px;
+        width: 30rem;
+    }
+
+    .pass {
+        border: 2px solid deepskyblue;
+        width: 14rem;
+        height: 2rem;
+        background: white;
+        border-radius: 5px;
+    }
+
+    #passwordInput {
+        height: 100%;
+        width: 80%;
+        border: none;
+        outline: none;
+        padding: 0 10px;
+    }
+
+    #togglePassView {
+        width: 15%;
+        height: 100%;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+</style>
+
+
+<body>
+    <div class="container">
+        <h1>Enter Password</h1>
+        <div class="pass">
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button id="togglePassView" onclick="togglePassword()"><i class="fas fa-eye"></i></button>
+        </div>
+    </div>
+
+    <script>
+        let password = document.getElementById("passwordInput");
+        let togglePassView = document.getElementById("togglePassView");
+
+        const togglePassword = () => {
+            if (password.type == "password") {
+                password.type = "text"
+                togglePassView.innerHTML = `<i class="fas fa-eye-slash"></i>`
+            }
+            else if (password.type == "text") {
+                password.type = "password"
+                togglePassView.innerHTML = `<i class="fas fa-eye"></i>`
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    padding: 20px 30px;
+    position: relative;
+    overflow: hidden;
+    background: #ff79d9;
+}
+
+.btn span{
+    position: relative;
+    pointer-events: none;
+}
+
+.btn::before{
+    content: '';
+    --size: 0;
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: radial-gradient(circle closest-side, rgb(192, 203, 255), transparent);
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+}
+
+.btn:hover::before{
+    --size: 200px;
+}

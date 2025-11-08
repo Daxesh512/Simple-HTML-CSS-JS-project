@@ -1,0 +1,43 @@
+ body,html
+{
+    background: #b2ebf2;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: cursive;
+}
+h1
+{
+    margin: 0;
+    font-size: 8em;
+    padding: 0;
+    color: white;
+    text-shadow: 
+        0 0.1em 20px rgba(0,0,0,1),
+        0.05em -0.03em 0 rgba(0,0,0,1),
+        0.05em 0.005em 0 rgba(0,0,0,1),
+        0 0.08em 0 rgba(0,0,0,1),
+        0.05em 0.08em 0 rgba(0,0,0,1),
+        0 -0.03em 0 rgba(0,0,0,1),
+        -0.03em -0.03em 0 rgba(0,0,0,1),
+        -0.03em 0.08em 0 rgba(0,0,0,1),
+        -0.03em 0 0 rgba(0,0,0,1);
+}
+span
+{
+    transform: scale(0.9);
+    display: inline-block;
+}
+
+
+
+
+
+
+

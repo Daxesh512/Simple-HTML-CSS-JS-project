@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>How To Make Website With Dark Theme</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+           <img src="images/logo.png" class="logo">
+            <nav>
+               <ul>
+                   <li><a href="">Home</a></li>
+                   <li><a href="">About</a></li>
+                   <li><a href="">Portfolio</a></li>
+                   <li><a href="">Services</a></li>
+                   <li><a href="">Hire Me</a></li>
+               </ul>
+            </nav>
+            <img src="images/moon.png" id="icon">
+        </div>
+        <div class="content">
+            <h1>I'm a <span class="style">Programmer</span></h1>
+            <p>I'm a Self Taught Developer, Frontend Web Developer, Web Designer, <br>Freelancer, Content Creator, YouTuber, Influencer. Providing <br> quality content on Web Development for Free.
+           </p> 
+           <div class="text">
+               <button class="btn">Download Resume</button>
+               <div class="social-media">
+                   <a href=""><i class="fa fa-github"></i></a>
+                   <a href=""><i class="fa fa-instagram"></i></a>
+                   <a href=""><i class="fa fa-linkedin"></i></a>
+               </div>
+           </div>  
+           <img src="images/bg.png" class="image">
+       </div>
+
+       <script>
+
+           var icon = document.getElementById("icon");
+
+           icon.onclick = function() {
+                   document.body.classList.toggle("dark-theme");
+
+                 if(document.body.classList.contains("dark-theme")) {
+                     icon.src = "images/sun.png";
+                 } else {
+                     icon.src = "images/moon.png";
+                 }
+           }
+       </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+body{
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 20px;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+/* Светлая тема */
+body.light {
+    background-color: white;
+    color: black;
+}
+
+body.light button{
+    background-color: rgb(219, 139, 139);
+}
+
+body.light a{
+    color: red;
+}
+
+
+/* Темная тема */
+
+body.dark {
+    background-color: rgb(19, 12, 37);
+    color: white;
+}
+
+body.dark button{
+    background-color: rgb(20, 100, 125);
+}
+
+body.dark a{
+    color: blue;
+}

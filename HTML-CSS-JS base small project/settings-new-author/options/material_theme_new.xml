@@ -1,0 +1,26 @@
+<application>
+  <component name="MaterialThemeNewConfig">
+    <option name="accentState">
+      <MTAccentConfigState>
+        <option name="accentColorHex" value="009688" />
+      </MTAccentConfigState>
+    </option>
+    <option name="contrastState">
+      <MTContrastConfigState>
+        <option name="contrastMode" value="true" />
+      </MTContrastConfigState>
+    </option>
+    <option name="metadata">
+      <MTMetadataState>
+        <option name="pristineConfig" value="false" />
+        <option name="userId" value="-478b6619:18f04a71350:-8000" />
+        <option name="version" value="9.2.1" />
+      </MTMetadataState>
+    </option>
+    <option name="themeState">
+      <MTThemeConfigState>
+        <option name="selectedThemeName" value="CUSTOM" />
+      </MTThemeConfigState>
+    </option>
+  </component>
+</application>

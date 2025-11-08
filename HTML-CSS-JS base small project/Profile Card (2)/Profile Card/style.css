@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Potta+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  background: #e0e0e0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 5rem 0rem;
+}
+
+.card {
+  border-radius: 5px;
+  width: 250px;
+  padding: 15px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #e0e0e0;
+  box-shadow: 5px 5px 10px #c3c3c3, -5px -5px 10px #fdfdfd;
+}
+
+.profile_img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  box-shadow: 5px 5px 10px #afafaf, -5px -5px 10px #ffffff;
+}
+
+.card h4 {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.card h6 {
+  font-size: 12px;
+}
+
+.card p {
+  font-size: 12px;
+  text-align: center;
+}
+
+.social_icons {
+  margin: 10px 0;
+  display: flex;
+}
+
+.social_icons li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 6px;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  box-shadow: 3px 3px 7px #afafaf, -3px -3px 7px #ffffff;
+}
+
+.social_icons li a i {
+  font-size: 15px;
+}
+
+.btn {
+  font-size: 15px;
+  margin: 12px 4px;
+  padding: 5px 11px;
+  border: none;
+  cursor: pointer;
+  border-radius: 17px;
+  background: #e0e0e0;
+  box-shadow: 5px 5px 9px #c1c1c1, -5px -5px 9px #ffffff;
+}

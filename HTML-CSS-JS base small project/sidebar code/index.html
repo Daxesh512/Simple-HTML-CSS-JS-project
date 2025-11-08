@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dark Sidebar by Kode Gurukul</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background: #1e1e1e;
+                color: #fff;
+                display: flex;
+            }
+
+            /* Sidebar styles */
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 220px;
+                background: #111;
+                padding-top: 20px;
+                transition: width 0.3s ease, transform 0.3s ease;
+                overflow: hidden;
+                z-index: 100;
+            }
+
+            .sidebar.collapsed {
+                width: 70px;
+            }
+
+            .sidebar.hidden {
+                transform: translateX(-100%);
+            }
+
+            /* Hamburger */
+            .hamburger {
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                background: #111;
+                border: none;
+                color: #fff;
+                font-size: 20px;
+                cursor: pointer;
+                padding: 8px 10px;
+                border-radius: 5px;
+                transition: background 0.3s;
+                z-index: 200;
+            }
+
+            .hamburger:hover {
+                background: #333;
+            }
+
+            /* Menu */
+            .menu {
+                list-style: none;
+                padding: 0;
+                margin: 60px 0 0 0;
+            }
+
+            .menu li {
+                display: flex;
+                align-items: center;
+                padding: 16px 20px;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+
+            .menu li:hover {
+                background: #333;
+            }
+
+            .menu li i {
+                font-size: 18px;
+                width: 30px;
+                text-align: center;
+            }
+
+            .menu li span {
+                transition: opacity 0.3s, visibility 0.3s;
+                white-space: nowrap;
+            }
+
+            .sidebar.collapsed .menu li span {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            /* Separator */
+            .separator {
+                border-top: 1px solid #333;
+                margin: 10px 0;
+            }
+
+            /* Main content */
+            .content {
+                margin-left: 220px;
+                padding: 20px;
+                transition: margin-left 0.3s ease;
+                flex: 1;
+            }
+
+            .sidebar.collapsed ~ .content {
+                margin-left: 70px;
+            }
+
+            .sidebar.hidden ~ .content {
+                margin-left: 0;
+            }
+        </style>
+        <!-- Font Awesome for icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+    </head>
+    <body>
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <ul class="menu">
+                <li><i class="fas fa-home"></i><span>Home</span></li>
+                <li><i class="fas fa-user"></i><span>Profile</span></li>
+                <li><i class="fas fa-envelope"></i><span>Messages</span></li>
+                <div class="separator"></div>
+                <li><i class="fas fa-cog"></i><span>Settings</span></li>
+                <li><i class="fas fa-sign-out-alt"></i><span>Logout</span></li>
+                <div class="separator"></div>
+                <li><i class="fa-solid fa-address-book"></i></i><span>Contact</span></li>
+                <li><i class="fa-solid fa-person"></i></i><span>About</span></li>
+                <li><i class="fa-solid fa-hand"></i></i></i><span>Disclaimer</span></li>
+            </ul>
+        </div>
+
+        <!-- Hamburger Button -->
+        <button class="hamburger" id="toggleBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1>Content</h1>
+            <p>Sidebar by Kode Gurukul.</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis fugiat eligendi provident consequatur? Consequuntur reprehenderit quod officiis, voluptatibus dolorum repellat voluptas? Quo aspernatur quibusdam, molestiae voluptatem exercitationem perspiciatis? Velit, repellat!
+                Dolorem, sequi? Consequatur a ut dolor totam quas, voluptate eligendi accusamus explicabo architecto beatae voluptas aperiam ipsa odit facere exercitationem praesentium at amet placeat qui? Ea quas consectetur minus! Officiis.
+                Est assumenda atque nobis ipsam alias necessitatibus voluptatem tempora architecto quod dolorum similique deleniti incidunt aperiam perspiciatis amet, esse obcaecati fugiat ad. Labore, illum quasi nemo soluta temporibus voluptate accusantium?
+                Deleniti iusto, optio sed amet tempore voluptatibus? Quibusdam fugiat facilis tempore? Consequatur voluptate dolores illo dignissimos nulla tenetur optio nihil ullam, soluta fuga quidem voluptas itaque dolor nemo dolorum aliquid.
+                Nemo at a itaque modi, sequi rem eaque illum eveniet repellat facilis officiis unde sunt nobis omnis porro quidem, odit ab vel voluptates? Quisquam assumenda voluptate veritatis nam voluptatem reprehenderit?
+            </p>
+        </div>
+
+        <script>
+            const sidebar = document.getElementById("sidebar");
+            const toggleBtn = document.getElementById("toggleBtn");
+
+            let state = "expanded"; // expanded | collapsed | hidden
+
+            toggleBtn.addEventListener("click", () => {
+                if (state === "expanded") {
+                    sidebar.classList.add("collapsed");
+                    state = "collapsed";
+                } else if (state === "collapsed") {
+                    sidebar.classList.remove("collapsed");
+                    sidebar.classList.add("hidden");
+                    state = "hidden";
+                } else {
+                    sidebar.classList.remove("hidden");
+                    state = "expanded";
+                }
+            });
+        </script>
+    </body>
+</html>

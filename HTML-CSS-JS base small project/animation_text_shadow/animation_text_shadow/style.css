@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(248, 190, 226);
+}
+
+.wave{
+    position: relative;
+    -webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+}
+
+.wave span{
+    position: relative;
+    display: inline-block;
+    color: #5a032e;
+    font-size: 6em;
+    animation: animate 2s ease-in-out infinite;
+    animation-delay: calc(.1s*var(--i));
+}
+
+@keyframes animate {
+    0%{
+        transform: translateY(0px);
+    }
+    20% {
+        transform: translateY(-20px);
+    }
+    40%, 
+    100%{
+        transform: translateY(0px);
+    }
+}

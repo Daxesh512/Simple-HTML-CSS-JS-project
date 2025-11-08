@@ -1,0 +1,55 @@
+@import './variables';
+.wrapper-bg {
+    min-height: 100vh;
+    background: url(/assets/images/bg-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: $Violet;
+    display: flex;
+    justify-content: center;
+    .wrapper {
+        padding: 0 60px;
+        margin: 0 auto;
+        .logo {
+            padding: 54px 0;
+            img {
+                height: 53px;
+            }
+        }
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            margin: 26px 0 10px;
+            max-width: 1300px;
+            .container {
+                padding: 46px 0 0 56px;
+                h1 {
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 40px;
+                    span {
+                        display: block;
+                    }
+                }
+                p {
+                    line-height: 28px;
+                    margin: 18px 0 38px;
+                }
+                a {
+                    font-family: 'Poppins', sans-serif;
+                    padding: 15px 65px;
+                    background: white;
+                    border-radius: 50px;
+                    text-decoration: none;
+                    color: $Violet;
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+                    transition: .2s;
+                    &:hover {
+                        background: $Soft-Magenta;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

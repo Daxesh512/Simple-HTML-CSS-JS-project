@@ -1,0 +1,1427 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Show Chart</title>
+
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/ajaxLoader.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <form action="display.html" method="GET" target="_blank" style="display:none">
+        <!--<input id="dateVal" name="dateVal" value="" />
+        <input id="timeVal" name="timeVal" value="" />
+        <input id="cityVal" name="cityVal" value="" />
+        <input id="timezoneVal" name="timezoneVal" value="" />
+        <input id="nameVal" name="nameVal" value="" />
+        <input id="dstval" name="dstval" value="" />
+        <input id="imgSrc" name="imgSrc" value="" />
+
+        <input id="btnSubmitToDisplay" type="submit" value="Submit" />-->
+    </form>
+    <form id="redirectForm" action="" method="get" target="_blank" style="display:none">
+        <input id="dateVal" name="dateVal" value="" />
+        <input id="timeVal" name="timeVal" value="" />
+        <input id="cityVal" name="cityVal" value="" />
+        <input id="timezoneVal" name="timezoneVal" value="" />
+        <!--<input id="nameVal" name="nameVal" value="" />-->
+        <input id="dstval" name="dstval" value="" />
+
+        <input id="nameRepVal" name="nameRepVal" value="" />
+        <input id="yearVal" name="yearVal" value="" />
+        <input id="monthVal" name="monthVal" value="" />
+        <input id="dayVal" name="dayVal" value="" />
+        <input id="hourVal" name="hourVal" value="" />
+        <input id="minuteVal" name="minuteVal" value="" />
+        <input id="secondVal" name="secondVal" value="" />
+        <input id="ciytVal" name="ciytVal" value="" />
+        <input id="countryVal" name="countryVal" value="" />
+        <input id="lonDegreeVal" name="lonDegreeVal" value="" />
+        <input id="lonMinuteVal" name="lonMinuteVal" value="" />
+        <input id="lonSecondVal" name="lonSecondVal" value="" />
+        <input id="latDegreeVal" name="latDegreeVal" value="" />
+        <input id="latMinuteVal" name="latMinuteVal" value="" />
+        <input id="latSecondVal" name="latSecondVal" value="" />
+        <input id="lon_EWVal" name="lon_EWVal" value="" />
+        <input id="lat_NSVal" name="lat_NSVal" value="" />
+        <input id="dstHourVal" name="dstHourVal" value="0" />
+        <input id="dstMinuteVal" name="dstMinuteVal" value="" />
+        <input id="timezoneHourVal" name="timezoneHourVal" value="" />
+        <input id="timezoneMinuteVal" name="timezoneMinuteVal" value="" />
+        <input id="senderVal" name="senderVal" value="" />
+        <input id="zodiacStyleVal" name="zodiacStyleVal" value="" />
+        <input id="chartStyleVal" name="chartStyleVal" value="" />
+
+        <input id="styledReport" name="styledReport" value="" />
+        <input id="imgSrc" name="imgSrc" value="" />
+
+
+        <input id="btnSubmitToShowReport" type="submit" value="Submit" />
+    </form>
+
+    <form autocomplete="off">
+        <div class="container">
+            <div id="errorMsgDiv" class="alert alert-danger" style="display:none">
+                <label id="errorMsg"></label>
+            </div>
+            <!--Show Chart Information-->
+            <div style="width:70%;float:left">
+                <div class="form-group row" id="divChartInfo" style="display:none">
+                    <p class="text-center" style="font-size:12pt"><strong>Chart Information</strong> </p>
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <td><strong>Name</strong></td>
+                                <td id="nameCell"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Date</strong></td>
+                                <td id="dateCell"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Time</strong></td>
+                                <td id="timeCell"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Place</strong></td>
+                                <td id="cityCell">Kababian, Afghanistan (Herat), 34N1905-062E1434</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Timezone</strong></td>
+                                <td id="timezoneCell"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>DST</strong></td>
+                                <td id="dstCell"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div style="float:left;width:100%">
+                <div class="col-md-6" style="float: left; margin-top: 35px">
+                    <img ID="img" Width="820" Height="820" style="display:none" />
+                </div>
+            </div>
+            <div style="width:100%;float:left">
+                <div class="col-md-6" style="float: left; margin-top: 35px">
+
+                    <div class="form-group row" style="display: none">
+                        <label class="col-sm-3 col-form-label">Choose:</label>
+                        <div class="col-sm-7">
+                            <input type="radio" id="fillInputHandy" name="fillInput" style="margin-right:2px"
+                                   onclick="changeFillInput()" checked />Fill inputs handy &nbsp;<br />
+                            <input type="radio" id="uploadXmlFile" name="fillInput" style="margin-right:2px"
+                                   onclick="changeFillInput()" />Upload Xml File &nbsp;<br />
+                            <input type="radio" id="uploadQuickchartFile" name="fillInput" style="margin-right:2px"
+                                   onclick="changeFillInput()" />Upload Quickchart File
+                        </div>
+                    </div>
+
+                    <div id="fillByInput" style="display:normal">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="name" name="Name" placeholder="Name"
+                                       value="" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="year" class="col-sm-3 col-form-label">Date</label>
+                            <div class="col-md-3" style="padding-left: 15px;padding-right: 5px;">
+                                <select class="form-control" id="year" name="">
+                                    <option value="-1">Year</option>
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-2" style="padding-left: 0px;padding-right: 0px;">
+                                <select class="form-control" id="month" name="">
+                                    <option value="-1">Month</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2" style="padding-left: 5px;">
+                                <select class="form-control" id="day" name="">
+                                    <option value="-1">Day</option>
+                                </select>
+
+                            </div>
+                            <div class="col-md-2" style="display:normal;padding-top: 9px;padding-left: 20px;">
+                                <button type="button" class="btn btn-info btn-xs"
+                                        onclick="setCurrentTime()">
+                                    Now
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="hour" class="col-sm-3 col-form-label">Time</label>
+                            <div class="col-md-3" style="padding-left: 15px;padding-right: 5px;">
+                                <select class="form-control" id="hour" name="">
+                                    <option value="-1">Hour</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2" style="padding-left: 0px;padding-right: 0px;">
+                                <select class="form-control" id="minute" name="">
+                                    <option value="-1">Minute</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2" style="padding-left: 5px;">
+                                <select class="form-control" id="second" name="">
+                                    <option value="-1">Sec</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="date" class="col-sm-3 col-form-label">Country</label>
+                            <div class="col-sm-7">
+                                <select class="form-control" onchange="counntryChanged()"
+                                        onclick="initializeMinAndSecond()" id="country" name="Country">
+                                    <option value="-1">Select a country ...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="city" class="col-sm-3 col-form-label">City</label>
+                            <div class="col-md-7">
+                                <div class="autocomplete">
+                                    <input type="text" autocomplete="off" class="clearable form-control"
+                                           style="width:490px" id="city" name="findCity" placeholder="City"
+                                           oninput="searchCity()" />
+                                </div>
+                            </div>
+                            <div style="height: 7px;"></div>
+                            <div class="col-md-2" style="display:normal;padding-left: 10px;">
+                                <button type="button" class="btn btn-info btn-xs"
+                                        onclick="showDetailedChartInfo()">
+                                    Manual
+                                </button>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row">
+                            <label for="city" class="col-sm-3 col-form-label"></label>
+                            <div class="col-md-7">
+                                <button type="button" class="btn  btn-xs" onclick="showDetailedChartInfo()">Manual</button>
+                            </div>
+                            <div class="col-md-2" id="btnManual" style="display:normal"></div>
+                        </div> -->
+                        <!--<div class="form-group row" id="btnDetailedInfo" style="display:none">
+                            <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#autocompleteFields">Show Details</button>
+                        </div>-->
+                        <!--<div class="form-group row" id="btnDetailedInfo" style="display:none">
+                            <button type="button" class="btn btn-info btn-block" onclick="showDetailedChartInfo()">Manual entery</button>
+                        </div>-->
+                        <!--<div class="form-group row" id="btnDetailedInfo" style="display:none">
+                            <button type="button" class="btn btn-info btn-block" onclick="showDetailedChartInfo()">Manual Entry</button>
+                        </div>-->
+                        <!--<div id="autocompleteFields" class="collapse">-->
+                        <div id="autocompleteFields" style="display:none">
+                            <div class="form-group row" style="margin-bottom: 0px">
+                                <label for="" class="col-sm-3 col-form-label"></label>
+                                <label class="col-sm-2">
+                                    Degree
+                                </label>
+                                <label class="col-sm-2">
+                                    Minute
+                                </label>
+                                <label class="col-sm-2">
+                                    Second
+                                </label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lonDeg" class="col-sm-3 col-form-label"> Longitude</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="lonDegree" name="LonDegree"
+                                           placeholder="" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="lonMinute" name="LonMinute"
+                                           placeholder="" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="lonSecond" name="LonSecond"
+                                           placeholder="" />
+                                </div>
+                                <div class="col-sm-3" style="padding-right: 0px;padding-left: 50px;">
+                                    <input type="radio" id="lonE" name="longitudeRadio" value="E" />E &nbsp;
+                                    <input type="radio" id="lonW" name="longitudeRadio" value="W" />W
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="lonDeg" class="col-sm-3 col-form-label">Lattitude</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="latDegree" name="LatDegree"
+                                           placeholder="" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="latMinute" name="LatMinute"
+                                           placeholder="" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="latSecond" name="LatSecond"
+                                           placeholder="" />
+                                </div>
+                                <div class="col-sm-3" style="padding-left: 50px;">
+                                    <input type="radio" id="latN" name="lattitudeRadio" value="N" />N &nbsp;
+                                    <input type="radio" id="latS" name="lattitudeRadio" value="S" />S
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-bottom: 0px">
+                                <label for="" class="col-sm-3 col-form-label"></label>
+                                <label class="col-sm-2">
+                                    Hour
+                                </label>
+                                <label class="col-sm-2">
+                                    Minute
+                                </label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lonDeg" class="col-sm-3 col-form-label">Timezone</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="timezoneHour" name="TimezoneHour"
+                                           placeholder="" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="timezoneMinute" name="TimezoneMinute"
+                                           placeholder="" />
+                                </div>
+                            </div>
+                            <div class="form-group row" id="dstTimeGroup" style="display:normal">
+                                <label for="lonDeg" class="col-sm-3 col-form-label">DST</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="dstSelect" name="Dst">
+                                        <option value="1">Yes (1h)</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Chart Style-->
+                        <div class="form-group row" id="dstTimeGroup" style="display:normal">
+                            <label for="chartStyle" class="col-sm-3 col-form-label">Chart Style</label>
+                            <div class="col-sm-4">
+                                <!--changeStyle()-->
+                                <select onchange="" class="form-control" id="chartStyle" name="Dst">
+                                    <option value="W">Wheel chart</option>
+                                    <option value="N">North indian</option>
+                                    <option value="S">South indian</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--Zodiac-->
+                        <div class="form-group row" id="dstTimeGroup" style="display:normal">
+                            <label for="zodiacStyle" class="col-sm-3 col-form-label">Zodiac</label>
+                            <div class="col-sm-3">
+                                <select onchange="" class="form-control" id="zodiacStyle">
+                                    <option value="T">Tropical</option>
+                                    <option value="sidereal">Sidereal</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="fillByXmlFile" style="display:none">
+                        <div class="form-group row">
+                            <!--<label class="col-sm-2"></label>-->
+                            <div class="col-sm-7">
+                                <a target="_blank" href="~/Files/SampleXmlInput.xml">Sample xml input</a>
+                            </div>
+                            <label class="col-sm-2"></label>
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control" id="xmlInput" onchange="xmlFileUploaded()" />
+                            </div>
+                        </div>
+                        <!--show error-->
+                        <div class="form-group row" id="xmlFileUploadeError" style="display: none">
+                            <p class="col-sm-5" style="color: red; margin-bottom: 0px;">Please select a .xml file.</p>
+                        </div>
+
+                    </div>
+                    <div id="fillByQuickchart" style="display:none">
+                        <div class="form-group row">
+                            <div class="col-sm-7">
+                                <a target="_blank" href="~/Files/SampleQuickchartInput.txt">Sample quickchart input</a>
+                            </div>
+                            <label class="col-sm-2"></label>
+                            <div class="col-sm-7">
+                                <input type="file" class="form-control" id="quickchartInput"
+                                       onchange="quickchartFileUploaded()" />
+                            </div>
+                        </div>
+                        <!--show error-->
+                        <div class="form-group row" id="quickchartFileUploadeError" style="display: none">
+                            <p id="" class="col-sm-5" style="color: red; margin-bottom: 0px;">
+                                Please select a .txt file.
+                            </p>
+                        </div>
+                    </div>
+                    <!--Hidden button for height and widith of chart-->
+                    <div>
+                        <input id="width" type="hidden" value="800" />
+                        <input id="height" type="hidden" value="800" />
+                        <input id="sender" type="hidden" value="BINDU" />
+
+                    </div>
+
+                    <div id="btnGroup" style="display:normal">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label"></label>
+                            <button class="btn btn-success" id="show" onclick="sendData(redirect = false)" type="button"
+                                    style="margin-left: 15px; float: left">
+                                Show
+                            </button>
+                            <!--<button class="btn btn-success" id="" onclick="sendData(redirect=true)" type="button"
+                                      style="margin-left: 15px; float: left;display:none">
+                                  Go to page result
+                              </button>-->
+                              <!--<input type="hidden" value="" id="btnSubmitToDisplay" />-->
+                            <!--<button class="btn btn-primary" id="exportXml" onclick="exportXmlFile()"
+                                    type="button" style="margin-left: 15px; float: left">
+                                Export Xml File
+                            </button>-->
+                        </div>
+                        <!--<div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label"></label>
+                            <a id="xmlUrl" style="display:none">Click to download XML file</a>
+                        </div>-->
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+    <div class="modal"></div>
+
+    <script src="scripts/jquery-1.10.2.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script>
+        var lon_EW, lat_NS;
+        const regexOnlyChar = /^[a-zA-Z]+$/;
+        const regexUnsignedNumber = /^\d+$/;
+        const regexSignedNumber = /^-?\d*\.?\d*$/;
+        //  var APIurl = 'https://localhost:44754/api';
+        var APIurl = 'http://api.binduastrology.com/api';
+
+        // Clear serch city input
+        jQuery(function ($) {
+            function tog(v) { return v ? 'addClass' : 'removeClass'; }
+
+            $(document).on('input', '.clearable', function () {
+                $(this)[tog(this.value)]('x');
+            }).on('mousemove', '.x', function (e) {
+                $(this)[tog(this.offsetWidth - 18 < e.clientX - this.getBoundingClientRect().left)]('onX');
+            }).on('click', '.onX', function () {
+                $(this).removeClass('x onX').val('');
+            });
+
+        });
+
+        window.onload = function () {
+            $('#containerBodyContent').addClass("changeMargin");
+            //document.getElementById("year").style.borderColor = 'red';
+
+            //LoadCountries
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: APIurl + "/Home/GetCountries",
+                data: {
+                    sender: document.getElementById("sender").value
+                },
+                success: function (response) {
+                    var elementCountry = document.getElementById("country");
+                    $.each(response, function (index, country) {
+                        $("#country").append("<option value='" + country[0] + "'>" + country[1] + "</option>");
+                    });
+                }
+            });
+
+            //Load years
+            for (var i = 1900; i < 2031; i++) {
+                $("#year").append("<option value='" + i + "'>" + i + "</option>");
+            }
+
+            //Load days
+            for (var i = 1; i < 32; i++) {
+                $("#day").append("<option value='" + i + "'>" + i + "</option>");
+            }
+            //Load Hour
+            $("#hour").append("<option value='" + 0 + "'>" + 0 + ' (' + 12 + ' AM) ' + "</option>");
+
+            for (var i = 1; i < 12; i++) {
+                $("#hour").append("<option value='" + i + "'>" + i + ' (' + i + ' AM) ' + "</option>");
+            }
+            for (var i = 12; i < 24; i++) {
+                $("#hour").append("<option value='" + i + "'>" + i + ' (' + String(i - 12) + ' PM) ' + "</option>");
+            }
+
+            //Load Mins
+            for (var i = 0; i < 60; i++) {
+                $("#minute").append("<option value='" + i + "'>" + i + "</option>");
+                $("#second").append("<option value='" + i + "'>" + i + "</option>");
+
+            }
+        }
+
+        function generateReport(styledReport) {
+
+
+            document.getElementById("redirectForm").action = "ShowChart.html";
+
+            var q = document.getElementById("chartStyle");
+            var chartValue = q.options[q.selectedIndex].value;
+
+            var r = document.getElementById("zodiacStyle");
+            var zodiacValue = r.options[r.selectedIndex].value;
+
+            var data = {
+                Name: document.getElementById("name").value,
+                Year: document.getElementById("year").value,
+                Month: document.getElementById("month").value,
+                //Month: $('#month').find(":selected").text(),
+
+                Day: document.getElementById("day").value,
+                Hour: document.getElementById("hour").value,
+                Minute: document.getElementById("minute").value,
+                Second: document.getElementById("second").value,
+                City: document.getElementById("city").value,
+                Country: document.getElementById("country").value,
+                LonDegree: document.getElementById("lonDegree").value,
+                LonMinute: document.getElementById("lonMinute").value,
+                LonSecond: document.getElementById("lonSecond").value,
+                LatDegree: document.getElementById("latDegree").value,
+                LatMinute: document.getElementById("latMinute").value,
+                LatSecond: document.getElementById("latSecond").value,
+                Lon_EW: $('input[name=longitudeRadio]:checked').val(),
+                Lat_NS: $('input[name=lattitudeRadio]:checked').val(),
+                //DstHour: document.getElementById("dstHour").value,
+                DstHour: $('#dstSelect').find(":selected").val(),
+                DstMinute: 0,
+                TimezoneHour: document.getElementById("timezoneHour").value,
+                TimezoneMinute: document.getElementById("timezoneMinute").value,
+                zodiacStyle: zodiacValue,
+                chartStyle: chartValue,
+                sender: document.getElementById("sender").value
+            };
+
+
+            document.getElementById("dateVal").value = $('#month').find(":selected").text() + ", " + data.Day + ", " + data.Year;
+            document.getElementById("timeVal").value = data.Hour + ":" + data.Minute + ":" + data.Second;
+            document.getElementById("cityVal").value = data.City;
+            document.getElementById("timezoneVal").value = data.TimezoneHour + ":" + data.TimezoneMinute;
+
+            document.getElementById("nameRepVal").value = data.Name;
+            document.getElementById("yearVal").value = data.Year;
+            document.getElementById("monthVal").value = data.Month;
+            document.getElementById("dayVal").value = data.Day;
+            document.getElementById("hourVal").value = data.Hour;
+            document.getElementById("secondVal").value = data.Second;
+            document.getElementById("ciytVal").value = data.City;
+            document.getElementById("countryVal").value = data.Country;
+            document.getElementById("lonDegreeVal").value = data.LonDegree;
+            document.getElementById("lonMinuteVal").value = data.LonMinute;
+            document.getElementById("lonSecondVal").value = data.LonSecond;
+
+            document.getElementById("minuteVal").value = data.Minute;
+            document.getElementById("latDegreeVal").value = data.LatDegree;
+            document.getElementById("latMinuteVal").value = data.LatMinute;
+            document.getElementById("latSecondVal").value = data.LatSecond;
+            document.getElementById("lon_EWVal").value = data.Lon_EW;
+            document.getElementById("lat_NSVal").value = data.Lat_NS;
+            document.getElementById("dstHourVal").value = data.DstHour;
+            document.getElementById("timezoneHourVal").value = data.TimezoneHour;
+            document.getElementById("timezoneMinuteVal").value = data.TimezoneMinute;
+            document.getElementById("senderVal").value = data.sender;
+            document.getElementById("styledReport").value = String(styledReport);
+            document.getElementById("zodiacStyleVal").value = data.zodiacStyle;
+            document.getElementById("chartStyleVal").value = data.chartStyle;
+
+
+            document.getElementById("redirectForm").action = "ShowReport.html";
+            $("#btnSubmitToShowReport").click();
+        }
+
+        // set default value for hour, min snd second if user left them empty
+        function initializeMinAndSecond() {
+            if ($('#hour').find(":selected").val() === '-1') {
+                $('#hour').val(0);
+            }
+            if ($('#minute').find(":selected").val() === '-1') {
+                $('#minute').val(0);
+            }
+            if ($('#second').find(":selected").val() === '-1') {
+                $('#second').val(0);
+            }
+        }
+
+        function ShowErrorMsg(msg) {
+            document.getElementById("errorMsg").innerHTML = msg;
+            $('#errorMsgDiv').show();
+        }
+        function setCurrentTime() {
+            var today = new Date();
+
+            $('#year').val(Number(today.getFullYear()));
+            $('#month').val(Number(today.getMonth()) + 1);
+            $('#day').val(Number(today.getDate()));
+            $('#hour').val(Number(today.getHours()));
+            $('#minute').val(Number(today.getMinutes()));
+            $('#second').val(Number(today.getSeconds()));
+
+        }
+
+        function showDetailedChartInfo() {
+            if ($("#autocompleteFields").css('display') == 'block') {
+                $('#autocompleteFields').hide();
+            }
+            else if ($("#autocompleteFields").css('display') == 'none') {
+                $('#autocompleteFields').show();
+            }
+        }
+
+        function exportXmlFile() {
+            if (!validateInput()) {
+                return;
+            }
+            else {
+                var data = {
+                    Name: document.getElementById("name").value,
+                    Year: document.getElementById("year").value,
+                    Month: document.getElementById("month").value,
+                    Day: document.getElementById("day").value,
+                    Hour: document.getElementById("hour").value,
+                    Minute: document.getElementById("minute").value,
+                    Second: document.getElementById("second").value,
+                    City: document.getElementById("city").value,
+                    Country: document.getElementById("country").value,
+                    LonDegree: document.getElementById("lonDegree").value,
+                    LonMinute: document.getElementById("lonMinute").value,
+                    LonSecond: document.getElementById("lonSecond").value,
+                    LatDegree: document.getElementById("latDegree").value,
+                    LatMinute: document.getElementById("latMinute").value,
+                    LatSecond: document.getElementById("latSecond").value,
+                    Lon_EW: $('input[name=longitudeRadio]:checked').val(),
+                    Lat_NS: $('input[name=lattitudeRadio]:checked').val(),
+                    //DstHour: document.getElementById("dstHour").value,
+                    DstHour: $('#dstSelect').find(":selected").val(),
+                    DstMinute: 0,
+                    TimezoneHour: document.getElementById("timezoneHour").value,
+                    TimezoneMinute: document.getElementById("timezoneMinute").value,
+                    sender: document.getElementById("sender").value
+
+                };
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: APIurl + "/Home/SaveAsXmlAndQuickchart",
+                    data: data,
+                    success: function (response) {
+                        //xmlUrl
+                        $('#xmlUrl').attr("href", APIurl + "/" + response.FileName + ".xml");
+                        $('#xmlUrl').attr("target", "_blank");
+                        $('#xmlUrl').show();
+                    }
+                });
+            }
+        }
+        function changeFillInput() {
+            if (document.getElementById("fillInputHandy").checked) {
+                $('#img').hide();
+                $('#changeImageStyle').hide();
+                $('#fillByXmlFile').hide();
+                $('#fillByQuickchart').hide();
+                $('#fillByInput').show();
+                $('#btnGroup').show();                     // show buttons
+
+            }
+            else if (document.getElementById("uploadXmlFile").checked) {
+                $('#img').hide();
+                $('#changeImageStyle').hide();
+                $('#fillByInput').hide();
+                $('#fillByQuickchart').hide();
+                $('#btnGroup').hide();                     // hide buttons
+                $('#fillByXmlFile').show();
+            }
+            else if (document.getElementById("uploadQuickchartFile").checked) {
+                $('#img').hide();
+                $('#changeImageStyle').hide();
+                $('#fillByInput').hide();
+                $('#fillByXmlFile').hide();
+                $('#btnGroup').hide();                     // hide buttons
+                $('#fillByQuickchart').show();
+            }
+        }
+        function xmlFileUploaded() {
+            var input = document.getElementById("xmlInput");
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                readXml = e.target.result;
+
+                parser = new DOMParser();
+                xmlDoc = parser.parseFromString(readXml, "text/xml");
+
+                var data = {
+                    Name: xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue,
+                    Year: xmlDoc.getElementsByTagName("year")[0].childNodes[0].nodeValue,
+                    Month: xmlDoc.getElementsByTagName("month")[0].childNodes[0].nodeValue,
+                    Day: xmlDoc.getElementsByTagName("day")[0].childNodes[0].nodeValue,
+                    Hour: xmlDoc.getElementsByTagName("hour")[0].childNodes[0].nodeValue,
+                    Minute: xmlDoc.getElementsByTagName("minute")[0].childNodes[0].nodeValue,
+                    Second: xmlDoc.getElementsByTagName("second")[0].childNodes[0].nodeValue,
+                    City: xmlDoc.getElementsByTagName("place")[0].childNodes[0].nodeValue,
+                    //Country: xmlDoc.getElementsByTagName("Country")[0].childNodes[0].nodeValue,
+                    Country: "",
+                    LonDegree: xmlDoc.getElementsByTagName("lon1")[0].childNodes[0].nodeValue,
+                    LonMinute: xmlDoc.getElementsByTagName("lon2")[0].childNodes[0].nodeValue,
+                    LatDegree: xmlDoc.getElementsByTagName("lat1")[0].childNodes[0].nodeValue,
+                    LatMinute: xmlDoc.getElementsByTagName("lat2")[0].childNodes[0].nodeValue,
+                    Lon_EW: xmlDoc.getElementsByTagName("lon3")[0].childNodes[0].nodeValue,
+                    Lat_NS: xmlDoc.getElementsByTagName("lat3")[0].childNodes[0].nodeValue,
+                    DstHour: xmlDoc.getElementsByTagName("dsth")[0].childNodes[0].nodeValue,
+                    DstMinute: xmlDoc.getElementsByTagName("dstm")[0].childNodes[0].nodeValue,
+                    TimezoneHour: xmlDoc.getElementsByTagName("zoneh")[0].childNodes[0].nodeValue,
+                    TimezoneMinute: xmlDoc.getElementsByTagName("zonem")[0].childNodes[0].nodeValue,
+                    Width: document.getElementById("width").value,
+                    Height: document.getElementById("height").value,
+                    sender: document.getElementById("sender").value
+
+                };
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: APIurl + "/Home/ShowChart",
+                    data: data,
+                    success: function (response) {
+                        $("#img").prop("src", "");
+                        // set for src of img tag
+                        $("#img").prop("src", "data:image/png;base64," + response.ImageSource);
+                        $('#img').show();
+                    }
+                });
+            }
+            reader.readAsText(input.files[0]);
+
+        }
+        function quickchartFileUploaded() {
+            var input = document.getElementById("quickchartInput");
+            if (input.files[0].size == 0) {
+                $('#quickchartFileUploadeError').show();
+                return;
+            }
+            else {
+                $('#quickchartFileUploadeError').hide();
+            }
+            if (input.files[0].type != "text/plain") {
+                $('#quickchartFileUploadeError').show();
+                return;
+            }
+            else {
+                $('#quickchartFileUploadeError').hide();
+            }
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                readContent = e.target.result;
+
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: APIurl + "/Home/ImportQuickChart",
+                    data: {
+                        sender: document.getElementById("sender").value,
+                        textFile: readContent
+                    },
+                    success: function (response) {
+                        if (response.Error) {
+                            ShowErrorMsg("File is not in quickchart format !.\n Plaese upload a file as the sample file");
+                        }
+                        else {
+                            $("#img").prop("src", "");
+                            // set for src of img tag
+                            $("#img").prop("src", "data:image/png;base64," + response.ImageSource);
+                            $('#img').show();
+                        }
+                    }
+                });
+            }
+            reader.readAsText(input.files[0]);
+        }
+        function sendData(redirect) {
+            // alert(typeof (document.getElementById("month").value));
+            // alert(typeof (Number(document.getElementById("month").value)));
+            var e = document.getElementById("chartStyle");
+            var chartValue = e.options[e.selectedIndex].value;
+
+            var e = document.getElementById("zodiacStyle");
+            var zodiacValue = e.options[e.selectedIndex].value;
+
+            if (document.getElementById("fillInputHandy").checked) {
+                if (!validateInput()) {
+                    return;
+                }
+                else {
+                    $('#errorMsgDiv').hide();
+                    // inputs validated successfuly
+                    if (lon_EW == undefined) lon_EW = "E";
+                    if (lat_NS == undefined) lat_NS = "N";
+
+
+                    var data = {
+                        Name: document.getElementById("name").value,
+                        Year: document.getElementById("year").value,
+                        Month: document.getElementById("month").value,
+                        //Month: $('#month').find(":selected").text(),
+
+                        Day: document.getElementById("day").value,
+                        Hour: document.getElementById("hour").value,
+                        Minute: document.getElementById("minute").value,
+                        Second: document.getElementById("second").value,
+                        City: document.getElementById("city").value,
+                        Country: document.getElementById("country").value,
+                        LonDegree: document.getElementById("lonDegree").value,
+                        LonMinute: document.getElementById("lonMinute").value,
+                        LonSecond: document.getElementById("lonSecond").value,
+
+                        LatDegree: document.getElementById("latDegree").value,
+                        LatMinute: document.getElementById("latMinute").value,
+                        LatSecond: document.getElementById("latSecond").value,
+
+
+                        Lon_EW: $('input[name=longitudeRadio]:checked').val(),
+                        Lat_NS: $('input[name=lattitudeRadio]:checked').val(),
+                        //DstHour: document.getElementById("dstHour").value,
+                        DstHour: $('#dstSelect').find(":selected").val(),
+                        DstMinute: 0,
+                        TimezoneHour: document.getElementById("timezoneHour").value,
+                        TimezoneMinute: document.getElementById("timezoneMinute").value,
+                        ChartStyle: chartValue,
+                        ZodiacStyle: zodiacValue,
+                        Width: document.getElementById("width").value,
+                        Height: document.getElementById("height").value,
+                        sender: document.getElementById("sender").value
+                    };
+
+
+                    if (!redirect) {
+                        // Show ajax loading
+                        $body = $("body");
+                        jQuery.ajaxSetup({
+                            beforeSend: function () { $body.addClass("loading"); },
+                            complete: function () { $body.removeClass("loading"); }
+                        });
+                        $.ajax({
+                            type: "POST",
+                            url: APIurl + "/Home/ShowChart",
+                            data: data,
+                            success: function (response) {
+                                $("#img").prop("src", "");
+                                // set for src of img tag
+                                $("#img").prop("src", response.ImageSource);
+                                $('#img').show();
+                                //changeImageStyle
+                                $('#changeImageStyle').show();
+
+                                //fill Chart Info table
+                                document.getElementById("dateCell").innerHTML = $('#month').find(":selected").text() + ', ' + data.Day + ', ' + data.Year;
+                                document.getElementById("timeCell").innerHTML = data.Hour + ":" + data.Minute + ":" + data.Second;
+                                document.getElementById("cityCell").innerHTML = data.City;
+                                document.getElementById("timezoneCell").innerHTML = data.TimezoneHour + ":" + data.TimezoneMinute;
+                                document.getElementById("nameCell").innerHTML = data.Name;
+                                // visible table
+                                $('#divChartInfo').show();
+                            }
+                        });
+                    }
+                    else {
+                        jQuery.ajaxSetup({
+                            beforeSend: function () { },
+                            complete: function () { }
+                        });
+                        $.ajax({
+                            type: "POST",
+                            url: APIurl + "/Home/ShowChart",
+                            data: data,
+                            success: function (response) {
+
+                                if (data.DSTHour == "0") {
+                                    document.getElementById("dstval").value = 'No';
+                                }
+                                else {
+                                    document.getElementById("dstval").value = 'Yes (1h)';
+                                }
+
+                                document.getElementById("cityVal").value = data.City;
+                                document.getElementById("dateVal").value = $('#month').find(":selected").text() + ", " + data.Day + ", " + data.Year;
+                                document.getElementById("timeVal").value = data.Hour + ":" + data.Minute + ":" + data.Second;
+                                document.getElementById("cityVal").value = data.City;
+                                document.getElementById("timezoneVal").value = data.TimezoneHour + ":" + data.TimezoneMinute;
+                                document.getElementById("nameRepVal").value = data.Name;
+                                document.getElementById("imgSrc").value = response.ImageSource;
+
+
+                                document.getElementById("redirectForm").action = "Display.html";
+                                $("#btnSubmitToShowReport").click();
+                            }
+                        });
+                    }
+                }
+            }
+            else if (document.getElementById("uploadXmlFile").checked) {
+            }
+
+        }
+        function validateInput() {
+            isValid = true;
+
+            //if (document.getElementById("name").value.trim() == "" ||
+            //    $('#year').find(":selected").val() == -1 ||
+            //    $('#month').find(":selected").val() == -1 ||
+            //    $('#day').find(":selected").val() == -1 ||
+            //    $('#hour').find(":selected").val() == -1 ||
+            //    $('#minute').find(":selected").val() == -1 ||
+            //    $('#second').find(":selected").val() == -1 ||
+            //    document.getElementById("year").value.trim() == "" ||
+            //    document.getElementById("month").value.trim() == "" ||
+            //    document.getElementById("day").value.trim() == "" ||
+            //    document.getElementById("hour").value.trim() == "" ||
+            //    document.getElementById("minute").value.trim() == "" ||
+            //    document.getElementById("second").value.trim() == "" ||
+            //    document.getElementById("country").value.trim() == "" ||
+            //    document.getElementById("city").value.trim() == "" ||
+            //    document.getElementById("lonDegree").value.trim() == "" ||
+            //    document.getElementById("lonMinute").value.trim() == "" ||
+            //    document.getElementById("lonSecond").value.trim() == "" ||
+            //    document.getElementById("latDegree").value.trim() == "" ||
+            //    document.getElementById("latMinute").value.trim() == "" ||
+            //    document.getElementById("latSecond").value.trim() == "" ||
+            //    document.getElementById("timezoneHour").value.trim() == "" ||
+            //    document.getElementById("timezoneMinute").value.trim() == "") {
+            //    ShowErrorMsg("Fill all inputs.");
+            //    return false;
+            //}
+
+            if (document.getElementById("name").value.trim() == "") {
+                document.getElementById("name").style.borderColor = "red";
+                isValid = false;
+            }
+            else {
+                document.getElementById("name").style.removeProperty('border-color');
+            }
+            if ($('#year').find(":selected").val() == -1) {
+                document.getElementById("year").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("year").style.removeProperty('border-color');
+            }
+            if ($('#month').find(":selected").val() == -1) {
+                document.getElementById("month").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("month").style.removeProperty('border-color');
+            }
+            if ($('#day').find(":selected").val() == -1) {
+                document.getElementById("day").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("day").style.removeProperty('border-color');
+            }
+            if ($('#hour').find(":selected").val() == -1) {
+                document.getElementById("hour").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("hour").style.removeProperty('border-color');
+            }
+            if ($('#minute').find(":selected").val() == -1) {
+                //     alert("e");
+                document.getElementById("minute").style.borderColor = "red";
+                //       alert(document.getElementById("minute").style.borderColor);
+                isValid = false;
+            }
+            else {
+                document.getElementById("minute").style.removeProperty('border-color');
+            }
+            if ($('#second').find(":selected").val() == -1) {
+                document.getElementById("second").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("second").style.removeProperty('border-color');
+            }
+            if ($('#country').find(":selected").val() == -1) {
+                document.getElementById("country").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("country").style.removeProperty('border-color');
+            }
+            if (document.getElementById("minute").value.trim() == "") {
+                document.getElementById("minute").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("minute").style.removeProperty('border-color');
+            }
+            if (document.getElementById("city").value.trim() == "") {
+                document.getElementById("city").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("city").style.removeProperty('border-color');
+            }
+            if (document.getElementById("lonDegree").value.trim() == "") {
+                document.getElementById("lonDegree").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("lonDegree").style.removeProperty('border-color');
+            }
+            if (document.getElementById("lonMinute").value.trim() == "") {
+                document.getElementById("lonMinute").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("lonMinute").style.removeProperty('border-color');
+            }
+            if (document.getElementById("lonSecond").value.trim() == "") {
+                document.getElementById("lonSecond").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("lonSecond").style.removeProperty('border-color');
+            }
+            if (document.getElementById("latDegree").value.trim() == "") {
+                document.getElementById("latDegree").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("latDegree").style.removeProperty('border-color');
+            }
+            if (document.getElementById("latMinute").value.trim() == "") {
+                document.getElementById("latMinute").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("latMinute").style.removeProperty('border-color');
+            }
+            if (document.getElementById("latSecond").value.trim() == "") {
+                document.getElementById("latSecond").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("latSecond").style.removeProperty('border-color');
+            }
+            if (document.getElementById("timezoneHour").value.trim() == "") {
+                document.getElementById("timezoneHour").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("timezoneHour").style.removeProperty('border-color');
+            }
+
+            if (document.getElementById("timezoneMinute").value.trim() == "") {
+                document.getElementById("timezoneMinute").style.borderColor = "red";
+                isValid = false;
+
+            }
+            else {
+                document.getElementById("timezoneMinute").style.removeProperty('border-color');
+            }
+
+
+
+
+            if ($('input[name=longitudeRadio]:checked').val() == undefined) {
+                $('#longitudeError').show();
+                isValid = false;
+            }
+            else {
+                $('#longitudeError').hide();
+            }
+            if ($('input[name=lattitudeRadio]:checked').val() == undefined) {
+                $('#lattitudeError').show();
+                isValid = false;
+            }
+            else {
+                $('#lattitudeError').hide();
+            }
+            if (!isValid) {
+                ShowErrorMsg("Please fill all the fields!");
+
+            }
+
+            if (!regexSignedNumber.test(document.getElementById("lonDegree").value.trim())) {
+                document.getElementById("lonDegree").style.borderColor = "red";
+                ShowErrorMsg("longitude degree value should be number only !.");
+                isValid = false;
+            }
+            if (!regexSignedNumber.test(document.getElementById("lonMinute").value.trim())) {
+                document.getElementById("lonMinute").style.borderColor = "red";
+                ShowErrorMsg("longitude minute value should be number only !.");
+                isValid = false;
+            }
+            if (!regexSignedNumber.test(document.getElementById("lonSecond").value.trim())) {
+                document.getElementById("lonSecond").style.borderColor = "red";
+                ShowErrorMsg("longitude second value should be number only !.");
+                isValid = false;
+            }
+            if (!regexSignedNumber.test(document.getElementById("latDegree").value.trim())) {
+                document.getElementById("latDegree").style.borderColor = "red";
+                ShowErrorMsg("Lattitude degree value should be number only !.");
+                isValid = false;
+            }
+            if (!regexSignedNumber.test(document.getElementById("latMinute").value.trim())) {
+                document.getElementById("latMinute").style.borderColor = "red";
+                ShowErrorMsg("Lattitude minute value should be number only !.");
+                isValid = false;
+            }
+            if (!regexSignedNumber.test(document.getElementById("latSecond").value.trim())) {
+                document.getElementById("latSecond").style.borderColor = "red";
+                ShowErrorMsg("Lattitude second value should be number only !.");
+                isValid = false;
+            }
+            //if (!regexSignedNumber.test(document.getElementById("dstHour").value.trim())) {
+            //    ShowErrorMsg("Dst hour value should be number only !.");
+            //    return false;
+            //}
+            //if (!regexSignedNumber.test(document.getElementById("dstMinute").value.trim())) {
+            //    ShowErrorMsg("Dst minute value should be number only !.");
+            //    return false;
+            //}
+            if (!regexSignedNumber.test(document.getElementById("timezoneHour").value.trim())) {
+                document.getElementById("timezoneHour").style.borderColor = "red";
+
+                ShowErrorMsg("Timezone hour value should be number only !.");
+                isValid = false;
+            }
+            if (!regexSignedNumber.test(document.getElementById("timezoneMinute").value.trim())) {
+                document.getElementById("timezoneMinute").style.borderColor = "red";
+
+                ShowErrorMsg("Timezone minute value should be number only !.");
+                isValid = false;
+            }
+            return isValid;
+        }
+        function changeStyle() {
+            var e = document.getElementById("chartStyle");
+            var chartValue = e.options[e.selectedIndex].value;
+
+            var e = document.getElementById("zodiacStyle");
+            var zodiacValue = e.options[e.selectedIndex].value;
+
+            var data = {
+                Name: document.getElementById("name").value,
+                Year: document.getElementById("year").value,
+                Month: document.getElementById("month").value,
+                Day: document.getElementById("day").value,
+                Hour: document.getElementById("hour").value,
+                Minute: document.getElementById("minute").value,
+                Second: document.getElementById("second").value,
+                City: document.getElementById("city").value,
+                Country: document.getElementById("country").value,
+                LonDegree: document.getElementById("lonDegree").value,
+                LonMinute: document.getElementById("lonMinute").value,
+                LatDegree: document.getElementById("latDegree").value,
+                LatMinute: document.getElementById("latMinute").value,
+                Lon_EW: $('input[name=longitudeRadio]:checked').val(),
+                Lat_NS: $('input[name=lattitudeRadio]:checked').val(),
+                //DstHour: document.getElementById("dstHour").value,
+                DstHour: $('#dstSelect').find(":selected").val(),
+                DstMinute: 0,
+                TimezoneHour: document.getElementById("timezoneHour").value,
+                TimezoneMinute: document.getElementById("timezoneMinute").value,
+                ChartStyle: chartValue,
+                ZodiacStyle: zodiacValue,
+                Width: document.getElementById("width").value,
+                Height: document.getElementById("height").value,
+                sender: document.getElementById("sender").value
+
+            };
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: APIurl + "/Home/ShowChart",
+                data: data,
+                success: function (response) {
+                    $("#img").prop("src", "");
+                    // set for src of img tag
+                    $("#img").prop("src", response.ImageSource);
+                    $('#img').show();
+                    $('#changeImageStyle').show();
+
+                }
+            });
+        }
+        function searchCity() {
+            var valCity = document.getElementById("city").value;
+
+            // if length of input is more than 3 send request
+            if (valCity.length >= 3) {
+                if ($('#year').val() == -1 || $('#month').val() == -1 || $('#day').val() == -1 ) {
+                    ShowErrorMsg("Please Choose a date and time first!");
+                    
+         //           document.getElementById("name").value = "";
+            //        document.getElementById("city").value = "";
+
+                    return false;
+                }
+
+        
+
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: APIurl + "/Home/FindCity",
+                    data: {
+                        sender: document.getElementById("sender").value,
+                        country: document.getElementById("country").value,
+                        city: document.getElementById("city").value,
+                        year: document.getElementById("year").value,
+                        month: document.getElementById("month").value,
+                        day: document.getElementById("day").value,
+                        hour: document.getElementById("hour").value,
+                        minute: document.getElementById("minute").value,
+                        second: document.getElementById("second").value,
+                    },
+                    success: function (response) {
+                        // array of expected city is in in response
+                        autocomplete(document.getElementById("city"), response);
+                    },
+                    error: function () {
+                        ShowErrorMsg("Error FindCity");
+                    }
+                });
+            }
+        }
+        // autocomplete city
+        function autocomplete(inp, arr) {
+            /*the autocomplete function takes two arguments,
+            the text field element and an array of possible autocompleted values:*/
+            var currentFocus;
+
+            /*execute a function when someone writes in the text field:*/
+            //inp.addEventListener("input", function (e) {
+            var a, b, i, val = document.getElementById("city").value;
+
+            /*close any already open lists of autocompleted values*/
+            closeAllLists();
+            if (!val) { return false; }
+            currentFocus = -1;
+
+            /*create a DIV element that will contain the items (values):*/
+            a = document.createElement("DIV");
+            a.setAttribute("id", "city" + "autocomplete-list");
+            a.setAttribute("class", "autocomplete-items");
+
+
+
+            /*append the DIV element as a child of the autocomplete container:*/
+            document.getElementById("city").parentNode.appendChild(a);
+
+            /*for each item in the array...*/
+            for (i = 0; i < arr.length; i++) {
+
+                /*create a DIV element for each matching element:*/
+                b = document.createElement("DIV");
+
+                b.setAttribute("id", arr[i].ID);
+
+                /*make the matching letters bold:*/
+                b.innerHTML += arr[i].Place + " - " + arr[i].State + "," + " " + arr[i].LatitudeAutocomplete + " - " + arr[i].LongitudeAutocomplete;
+
+
+                /*insert a input field that will hold the current array item's value:*/
+                b.innerHTML += "<input type='hidden' value='" + arr[i].Place + "," + " " + arr[i].Latitude + "-" + arr[i].Longitude + "'>";
+
+                /*execute a function when someone clicks on the item value (DIV element):*/
+                b.addEventListener("click", setOnClickDelegate(inp, arr[i]));
+
+
+
+                a.appendChild(b);
+            }
+            if (arr.length > 4) {
+                a.setAttribute("style", "overflow:auto;height:300px");
+            }
+            else {
+                a.removeAttribute("style");
+            }
+
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        function setOnClickDelegate(inp, arr) {
+            return function () {
+
+                inp.value = arr.Place + " - " + arr.State + " (" + arr.LatitudeAutocomplete + " - " + arr.LongitudeAutocomplete + ")";
+                if (year == "" || month == "" || day == "") {
+                    ShowErrorMsg("Year,Month and Day shuold have value !");
+                    inp.value = "";
+                    return;
+                }
+                var inputLonDeg = document.getElementById("lonDegree");
+                var inputLonMin = document.getElementById("lonMinute");
+                var inputLonSec = document.getElementById("lonSecond");
+
+                var inputLatDeg = document.getElementById("latDegree");
+                var inputLatMin = document.getElementById("latMinute");
+                var inputLatSec = document.getElementById("latSecond");
+
+                //var inputDstH = document.getElementById("dstHour");
+                //var inputDstM = document.getElementById("dstMinute");
+
+                var dstTimeGroup = document.getElementById("dstTimeGroup");
+
+
+                var inputZoneH = document.getElementById("timezoneHour");
+                var inputZoneM = document.getElementById("timezoneMinute");
+                inputLonDeg.innerHTML = "";
+                inputLonDeg.value = arr.LonDegree;
+                inputLonMin.value = arr.LonMinute;
+                inputLonSec.value = arr.LonSecond;
+                if (arr.LonEW == "E") $('#lonE').prop('checked', true);
+                if (arr.LonEW == "W") $('#lonW').prop('checked', true);
+
+                inputLatDeg.value = arr.LatDegree;
+                inputLatMin.value = arr.LatMinute;
+                inputLatSec.value = arr.LatSecond;
+                if (arr.LatNS == "N") $('#latN').prop('checked', true);
+                if (arr.LatNS == "S") $('#latS').prop('checked', true);
+
+                $('#dstTimeGroup').show();
+                if (arr.DSTHour == "0") {
+                    $("#dstSelect").val(0);
+                    document.getElementById("dstCell").innerHTML = 'No';
+
+                }
+                else {
+                    $("#dstSelect").val(1);
+                    document.getElementById("dstCell").innerHTML = 'Yes (1h)';
+
+                }
+
+                //if (arr.DSTMinute != "") {
+                //    $('#dstSelect').remove(0);
+                //    $('#dstSelect').remove(0);
+                //    var temp = String(Number(arr.DSTHour) + Number(arr.DSTMinute) / 60);
+                //    $('#dstSelect').append('<option value="' + 2 + '">' + 'Yes (' + arr.DSTHour + 'h' + arr.DSTMinute + 'm)' + '</option>');
+                //    $('#dstSelect').append('<option value="' + 1 + '">' + 'Yes(1h)' + '</option>');
+                //    $('#dstSelect').append('<option value="' + 0 + '">' + 'No' + '</option>');
+
+                //    $("#dstSelect").val(2);
+                //}
+                //document.getElementById("dstCell").innerHTML = arr.DSTHour + ":" + arr.DSTMinute;
+
+                inputZoneH.value = arr.TimezoneHour;
+                inputZoneM.value = arr.TimezoneMinute;
+
+                $('#btnManual').show();
+                //$('#autocompleteFields').hide();
+            }
+
+            /*close the list of autocompleted values,
+            (or any other open lists of autocompleted values:*/
+            //  closeAllLists();
+
+        }
+
+
+        function counntryChanged() {
+            document.getElementById("city").value = "";
+        }
+    </script>
+
+</body>
+
+</html>

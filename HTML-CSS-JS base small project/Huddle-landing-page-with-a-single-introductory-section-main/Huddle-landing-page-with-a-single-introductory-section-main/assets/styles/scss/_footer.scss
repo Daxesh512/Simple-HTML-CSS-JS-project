@@ -1,0 +1,43 @@
+@import './variables';
+.footer-wrapper {
+    padding-bottom: 20px;
+    .social {
+        display: flex;
+        justify-content: flex-end;
+        ul {
+            display: flex;
+            list-style: none;
+            li {
+                &:nth-child(2) {
+                    margin: 0 15px;
+                }
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+                    color: white;
+                    border: 1px solid white;
+                    border-radius: 50px;
+                    height: 40px;
+                    width: 40px;
+                    &:hover {
+                        border-color: $Soft-Magenta;
+                        color: $Soft-Magenta;
+                    }
+                }
+            }
+        }
+    }
+    .attribution { 
+        font-size: 11px; 
+        text-align: center; 
+        a { 
+            color: hsl(228, 45%, 44%); 
+            &:hover {
+                color: $Soft-Magenta;
+            }
+        }
+    }
+}
+    

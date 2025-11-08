@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow: hidden;
+}
+
+
+html{
+    background-color: rgb(250, 245, 245)(250, 245, 245);
+}
+
+.section{
+    text-align: center;
+    margin-top: 2rem;
+    border: 25px solid rgb(85, 85, 235) ;
+    padding: 20px;
+    width: 65%;
+    height: 70%;
+    text-align: center;
+    margin-left: 200px;
+
+}
+.logo{
+    border: 13px solid red;
+    display: inline-block;
+    height: 30px;
+    width: 56px;
+
+}
+.hd{
+    display: inline;
+}
+
+
+  .img{
+    height: 200px;
+    width: 205px;
+}
+h1{
+    display: flexbox;
+}
+.head-1, .text-1 {
+    color: red;
+}
+.head-2{
+    padding-left: 7%;
+    font-size: 45px;
+}
+.text-1, .text-2, .img,.text-3{
+    padding: 8px;
+    font-size: 28px;
+    font-family: sans-serif;
+}
+.text-2{
+    color: rgb(85, 85, 235);
+}
+footer{
+    padding-top:25px ;
+}

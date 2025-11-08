@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Search Bar Typing Effect</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+            input,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                font-size: 16px;
+            }
+            textarea {
+                height: 200px;
+                resize: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Live Search Typing</h2>
+        <input type="text" id="searchBar" placeholder="Type something..." />
+        <textarea id="output" readonly></textarea>
+
+        <script>
+            const searchBar = document.getElementById("searchBar");
+            const output = document.getElementById("output");
+
+            searchBar.addEventListener("input", () => {
+                // Take the current input value
+                const text = searchBar.value;
+                // Add it as a new line in textarea
+                output.value += text + "\n";
+                // Auto scroll to bottom
+                output.scrollTop = output.scrollHeight;
+            });
+        </script>
+    </body>
+</html>

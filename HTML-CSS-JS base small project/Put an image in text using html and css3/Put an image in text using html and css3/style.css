@@ -1,0 +1,31 @@
+ body
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #e0dede;
+}
+h1
+{
+    font-size: 200px;
+    text-transform: uppercase;
+    letter-spacing: 20px;
+    font-weight: 900;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    background: url(img.jpg) 50% 50%;
+    margin: 0;
+    background-size: cover;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+
+
+
+
+
+
+

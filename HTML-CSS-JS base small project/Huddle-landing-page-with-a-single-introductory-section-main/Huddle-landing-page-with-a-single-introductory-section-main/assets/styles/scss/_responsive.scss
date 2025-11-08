@@ -1,0 +1,64 @@
+@media (min-width: 768px) and (max-width: 1259px) {
+    .wrapper-bg {
+        .wrapper {
+            .main-container {
+                margin-bottom: 30px;
+                .illustration {
+                    width: 40%;
+                    display: flex;
+                    align-items: center;
+                    img {
+                        width: 100%;
+                    }
+                }
+                .container {
+                    width: 60%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .wrapper-bg {
+        background: url(/assets/images/bg-mobile.svg) no-repeat;
+        background-color: $Violet;
+        background-position: top center;
+        .wrapper {
+            padding: 0 40px;
+            .logo {
+                img {
+                    height: 30px;
+                }
+            }
+            .main-container {
+                flex-direction: column;
+                margin-bottom: 80px;
+                .illustration {
+                    img {
+                        width: 100%;
+                    }
+                }
+                .container {
+                    width: 100%;
+                    padding: 60px 0 0;
+                    text-align: center;
+                    h1 {
+                        font-size: 24px;
+                    }
+                    a {
+                        padding: 10px 65px;
+                    }
+                }
+            }
+            .social {
+                justify-content: center;
+                margin-bottom: 20px;
+                a {
+                    height: 30px;
+                    width: 30px;
+                }
+            }
+        }
+    }
+}

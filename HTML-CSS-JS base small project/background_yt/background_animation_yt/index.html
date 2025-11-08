@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прокрутка</title>
+    <style>
+        body{
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container{
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scrolling-image{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 200px;
+            background-image: url('img.jpg');
+            background-size: 100vw;
+            background-repeat: repeat;
+            transform: translate(-50%, -50%);
+            animation: scroll 5s linear infinite;
+        }
+
+        @keyframes scroll{
+            from{
+                transform: translate(-50%, -50%) translateX(-100%);
+            }
+            to{
+                transform: translate(-50%, -50%) translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="scrolling-image"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+com.intellij.ml.llm
+ru.adelf.idea.dotenv
+com.chrisrm.idea.MaterialThemeUI
+com.mallowigi

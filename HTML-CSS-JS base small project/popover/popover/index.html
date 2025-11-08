@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popover</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main>
+        <button popovertarget="confrim-dialog" class="btn primary">Open Popover</button>
+
+        <dialog id="confrim-dialog" popover>
+            <h3>Delete task?</h3>
+            <p>Deleting this task will remote it permanetly. Any associated files, comments, and subtasks will also be deleted. Are you sure want to proceed?</p>
+            <button class="btn primary" popovertarget="confrim-dialog" popovertargetaction="hide">Delete</button>
+            <button class="btn secondary" popovertarget="confrim-dialog" popovertargetaction="hide">Cancel</button>
+        </dialog>
+    </main>
+</body>
+</html>

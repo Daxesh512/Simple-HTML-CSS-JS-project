@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(236, 236, 236);
+}
+
+.container{
+    display: flex;
+    width: 600px;
+    gap: 5px;
+}
+
+.container div{
+    width: 5rem;
+    height: 10rem;
+    flex-grow: 1;
+    background-color: rgb(173, 216, 230);
+    transition: all 0.5s;
+}
+
+.container div:nth-child(odd){
+    background-color: rgb(255, 99, 71);
+}
+
+.container div:hover{
+    flex-grow: 4;
+    cursor: pointer;
+}

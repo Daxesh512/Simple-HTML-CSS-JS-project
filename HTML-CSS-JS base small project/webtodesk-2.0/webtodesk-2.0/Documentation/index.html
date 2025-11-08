@@ -1,0 +1,374 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebToDesk Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="scribbler-global.css">
+    <link rel="stylesheet" href="scribbler-doc.css">
+    <link rel="author" href="humans.txt">
+  </head>
+  <body>
+    <div class="doc__bg"></div>
+    <nav class="header">
+      <h1 class="logo">WebToDesk</h1>
+      <ul class="menu">
+        <li class="menu__item">v2.0.0</li>
+      </ul>
+    </nav>
+    <div class="wrapper">
+      <aside class="doc__nav">
+        <ul>
+          <li class="js-btn selected">About WebToDesk</li>
+          <li class="js-btn">Contact Us</li>
+          <li class="js-btn">Files Structure</li>
+          <li class="js-btn">Customizing and Configurations</li>
+              <ul style="padding-left: 10px;">
+                <li class="js-btn">Change application URL</li>
+                <li class="js-btn">Change application name</li>
+                <li class="js-btn">Change application description</li>
+                <li class="js-btn">Change the width and height</li>
+                <li class="js-btn">Application Icon change</li>
+                <li class="js-btn">Redesign or edit local pages</li>
+                <li class="js-btn">Customize the Main / Right menu</li>
+                <li class="js-btn">Hide website elements</li>
+              </ul>
+          <li class="js-btn">Application Run Locally</li>
+          <li class="js-btn">Build the Application for platforms</li>
+        </ul>
+      </aside>
+      <article class="doc__content">
+
+
+        <section class="js-section">
+          <h3 class="section__title">About WebToDesk</h3>
+          <p><b>WebToDesk</b> converts your website to a native desktop application based on the <b>Electron</b> framework. Without learning any programming language, you can build your macOS, Windows and Linux application within a few minutes by following this documentation.</br></br>
+          With this, you can easily configure website URLs, Menus, Icons, Hidden Elements, Pop-Ups, Shortcuts, Loading pages, Error handling, Print and many more things as you want. Therefore every website which you used with this will definitely look like a native desktop application.
+          </p>
+        </section>
+
+        <section class="js-section">
+          <h3 class="section__title">Contact Us</h3>
+          <p>Email : damith.sameera1@gmail.com</p>
+          <p>Codecanyon : <a href="https://codecanyon.net/user/sameeradamith" target="_blank">Click Here</a></p>
+        </section>
+
+
+        <section class="js-section">
+          <h3 class="section__title">Files Structure</h3>
+          <ol>
+            <li class="js-btn"><b>node_modules</b> - All dependencies included in this folder (Electron).</li>
+            <li class="js-btn"><b>public folder</b> -  All used Images, stylesheet files included in this folder. </li>
+            <li class="js-btn"><b>build folder</b> – Include all app icons.</li>
+            <li class="js-btn"><b>dist folder</b>Built package files, applications are here</li>
+            <li class="js-btn"><b>config.js</b> - Application configuration file. (Application Name, URL, application window sizes and more.)</li>
+            <li class="js-btn"><b>package.json</b> - NodeJS application and package details.</li>
+            <li class="js-btn"><b>menu-config.js</b> – Main menu template</li>
+          </ol>
+        </section>
+
+
+
+        <section class="js-section">
+          <h3 class="section__title">Customizing and Configurations</h3>
+        </section>
+        <section class="js-section">
+          <h4>Change application URL</h4>
+          <p>On your project folder open config.js file. Change <b>websiteUrl</b> value.</p>
+          <div class="code__block code__block--notabs">
+            <pre class="code code--block">
+              <code>
+                //Main Application URL
+                'websiteUrl' : 'http://example.com',
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <section class="js-section">
+        <h4>Change application Name</h4>
+        <p>First, you need to change the name attribute of the <b>package.json</b> file in the application root directory .</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              "name": "New_App_Name",
+            </code>
+          </pre>
+        </div>
+        <p>Next, modify config.js file appName value.</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              'appName' : 'WebToDesk',
+            </code>
+          </pre>
+        </div>
+      </section>
+
+
+      <section class="js-section">
+        <h4>Change application description</h4>
+        <p>First you need to change the application root directory <b>package.json description</b> attribute.</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              "description": "Convert Website to a Desktop application",
+            </code>
+          </pre>
+        </div>
+      </section>
+
+      <section class="js-section">
+        <h4>Change the width and height</h4>
+        <p>Open your application config.js file, after that change the height, width, minHeight, and minWidth values.</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              //Application window width and height
+             'width' : Replace_Value,
+             'height' : Replace_Value,
+             'minWidth' : Replace_Value,
+             'minHeight' : Replace_Value,
+            </code>
+          </pre>
+        </div>
+
+        <div>
+          <pre class="code code--block">
+            <code><font color="red">
+              <b>Important: Default Values</b>
+                Height : 800px
+                Width : 600px
+                minHeight : 0
+                minWidth : 0
+              </font>
+            </code>
+          </pre>
+        </div>
+      </section>
+
+
+      <section class="js-section">
+        <h4>Application Icon change</h4>
+        <p>All application Icons are located in the build folder. Replace images using the same name.</p>
+        <div>
+          <pre class="code code--block">
+            <code><font color="red">
+              <b>Important</b>
+              macOS
+              Optional icon.icns (macOS app icon) or icon.png. Icon size should be at least 512x512.
+              Windows
+              Optional icon.ico (Windows app icon) or icon.png. Icon size should be at least 256x256.
+              Linux
+              Linux icon sets will be generated automatically based on the macOS icons file or common icon.png.
+
+              </font>
+            </code>
+          </pre>
+        </div>
+      </section>
+
+
+      <section class="js-section">
+        <h4>Redesign or edit local pages</h4>
+        <p>All local web pages of your application (About, Contact and Loading page) are located in the <b>public</b> directory. You can open any one of the pages which you want to edit and make changes according to your preference.</p>
+      </section>
+
+
+
+      <section class="js-section">
+        <h4>Customize the Main / Right menu</h4>
+        <p>There are two menu types</p>
+        <ul>
+          <li>Main application menu 	– 	menu-config.js</li>
+          <li>Right menu 			–	 right-menu-config.js</li>
+        </ul>
+
+        <img src="images/menu.png">
+
+        <h4>Link local pages to menu</h4>
+        <p>First create a .html page in your app's public folder. By using the following format, replace the values of your newly created html page file name value.</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              {label : 'Home', click : () => { require('./main')("home") }},
+              {label : 'About', click : () => { require('./main')("about") }},
+            </code>
+          </pre>
+        </div>
+
+        <h4>Add a new menu section – (Main menu)</h4>
+        <p>Copy-paste for the following code block and replace the values as you need.</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              {
+                  label: 'New_Menu_Name',
+                  submenu: [
+                      {role : 'reload'},
+                      {role : 'zoomIn'},
+                      {role : 'zoomOut'},
+                  ]
+              },
+            </code>
+          </pre>
+        </div>
+
+        <h4>Available Menu Roles List</h4>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              Undo, redo, cut, copy, paste, pasteAndMatchStyle, delete, selectAll, reload, forceReload, toggleDevTools, resetZoom, zoomIn, zoomOut, togglefullscreen, window, minimize, close, help, about, services, hide, hideOthers, unhide, quit, startSpeaking, stopSpeaking, close, minimize, zoom, front, appMenu, fileMenu, editMenu, viewMenu, recentDocuments, toggleTabBar, selectNextTab
+            </code>
+          </pre>
+        </div>
+
+        <h4>Right Menu Configuration</h4>
+        <p>As the documentation mentioned earlier, you can add the right menu also to Local web pages and roles. Simply navigate application root right-menu-config.js and edit.</p>
+      </section>
+
+
+
+      <section class="js-section">
+        <h4>Hide website elements</h4>
+        <p>Give a native look to your application. You can hide your website elements as you prefer. To do this, open <b>config.js</b> file.
+        </br></br>Next, you can add your class or id value separated by comma.
+        </p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              //Hide elements by ID
+              'hideElementsId' : ['id_1', 'id_2', 'id_3'],
+
+              //Hide elements by Class
+              'hideElementsClass' : ['class_1', 'class_2', 'class_3'],
+            </code>
+          </pre>
+        </div>
+                <img src="images/hide.png">
+      </section>
+
+
+
+      <section class="js-section">
+        <h3 class="section__title">Application Run Locally</h3>
+
+        <p>In your project folder simply open <b>terminal/command</b> line tools and install all dependencies.
+
+        <p><b><font color="blue">First you need to install your computer <a href="https://nodejs.org/en/" target="_blank"><font color="red">Node.js</a></font> letest version</font></b></p>
+
+        </br>Run the following command.
+        </p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              $ npm install
+            </code>
+          </pre>
+        </div>
+
+        <p>After successfully installed all the dependencies, run the following command.</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              $ npm start
+            </code>
+          </pre>
+        </div>
+      </section>
+
+
+  <section class="js-section">
+        <h3 class="section__title">Build the Application for platforms</h3>
+      </section>
+      <section class="js-section">
+        <p>Now you can use this customized application to build applications macOS, Windows and Linux platforms.</p>
+        <div>
+          <pre class="code code--block">
+            <code><font color="red">
+              <b>Important</b>
+              macOS User – Can build macOS, Windows and Linux version of your application
+              Windows User – Can only build Windows and Linux versions only
+              </font>
+            </code>
+          </pre>
+        </div>
+
+        <div>
+          <pre class="code code--block">
+            <code><font color="red">
+              <b>Supported Platforms</b>
+              <b>macOS</b>
+              Only 64bit binaries are provided for macOS. The minimum macOS version supported is macOS 10.10 (Yosemite).
+              <b>Windows</b>
+              Windows 7 and later are supported. Older operating systems are not supported (and do not work).
+              <b>Linux</b>
+              The prebuilt ia32 (i686) and x64 (amd64) binaries of Electron are built on Ubuntu 12.04, the armv7l binary is built against ARM v7 with hard-float ABI and NEON for Debian Wheezy.
+              </font>
+            </code>
+          </pre>
+        </div>
+
+        <p>First you need to install <b>electron-builder</b> package globally :</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              $ npm i electron-builder -g
+            </code>
+          </pre>
+        </div>
+
+        <p>To build all platform :</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              $ electron-builder -mwl
+            </code>
+          </pre>
+        </div>
+
+        <p>To build the macOS platform:</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              $ electron-builder --mac
+            </code>
+          </pre>
+        </div>
+
+        <p>To build the Windows platform:</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              $ electron-builder --win
+            </code>
+          </pre>
+        </div>
+
+        <p>To build the Linux platform:</p>
+        <div class="code__block code__block--notabs">
+          <pre class="code code--block">
+            <code>
+              $ electron-builder --linux
+            </code>
+          </pre>
+        </div>
+
+        <p>Built output applications are located in the newly created directory called <b>“dist”</b> which is inside your application directory.</p>
+
+      </section>
+
+
+
+      </article>
+    </div>
+
+    <footer class="footer">Once again, thank you so much for purchasing this <b>WebToDesk -  Convert Your Website to a Native Desktop Application.</b> As I said at the beginning, I'd be glad to help you if you have any questions relating to this WebToDesk Electron based Application. No guarantees, but I'll do my best to assist. If you have a more general question relating to the plugin on Codecanyon, you might consider visiting the forums and asking your question in the "Item Discussion" section.</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="scribbler.js"></script>
+  </body>
+</html>

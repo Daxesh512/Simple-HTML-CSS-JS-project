@@ -1,0 +1,83 @@
+<!doctype html class="my-2 rounded-full h-10 w-[16rem] px-4">
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome Icons  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>Random Joke Generator - @code.scientist</title>
+</head>
+
+<style>
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background-color: #111827;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid deepskyblue;
+        padding: 40px;
+        border-radius: 20px;
+        width: 30rem;
+    }
+
+    #joke {
+        font-style: italic;
+    }
+
+    .btn {
+        height: 3rem;
+        width: 8rem;
+        border: 2px solid deepskyblue;
+        background: deepskyblue;
+        color: white;
+        font-size: 16px;
+        border-radius: 7px;
+        padding: 8px;
+        margin-top: 30px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Random Joke Generator</h1>
+        <p id="joke">
+            You can get up to half a million dollars on the black market if you possess an authentic Chuck Norris pube.
+        </p>
+        <button type="submit" class="btn" onclick="fetchJoke()">New joke</button>
+    </div>
+
+    <script>
+        const fetchJoke = async () => {
+            let response = await fetch("https://api.chucknorris.io/jokes/random");
+
+            let data = await response.json()
+
+            document.getElementById("joke").innerText = data.value;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+ }
+ body{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+   overflow: hidden;
+   background: #238dff;
+}
+@keyframes model {
+  0%{
+    margin-bottom: -80px;
+  }
+  25%{
+    margin-bottom: 0px;
+  }
+}
+ .container{
+   max-width: 400px;
+   width:100%;
+   background: #fff;
+   padding: 25px;
+   overflow: hidden;
+   border-radius: 10px;
+   border: 1px solid #d9d9d9;
+   position: absolute;
+   display: none;
+   transition: 0.5s;
+   animation: model 0.9s;
+}
+.head{
+  width: 100%;
+  font-size: 20px;
+  opacity: 0.6;
+  display: flex;
+  border-bottom: 1px solid #c6b3b3;
+}
+.head .cancel{
+  margin-left: 265px;
+  cursor: pointer;
+}
+.cancel img{
+  width: 15px;
+}
+.icon{
+  margin-top: 30px;
+  display: flex;
+}
+.icon div{
+  margin: auto;
+}
+.copy{
+  width: 100%;
+  display: flex;
+  margin-top: 25px;
+}
+.copy input{
+  width: 75%;
+  margin-right: 2%;
+  height: 45px;
+  padding: 10px;
+  font-size: 16px;
+  border: #c6b3b3 1px solid;
+  border-radius: 10px;
+  outline: none;
+}
+.copy button{
+  width: 23%;
+  border: #c6b3b3 1px solid;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn{
+  font-size: 25px;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  background: #fff;
+  cursor: pointer;
+}
+#open{
+  font-size: 25px;
+  padding: 20px;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  background: transparent;
+}
+.btn img{
+  width: 30px;
+  height: 30px;
+  margin-top: 25px;
+  margin-left: 20px;
+  cursor: pointer;
+}

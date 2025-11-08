@@ -1,0 +1,7 @@
+<div class="container">
+        <div id="box"></div>
+        <div class="color">
+            <input type="color" id="color1" value="#945ef3">
+            <input type="color" id="color2"value="#9cebff">
+        </div>
+    </div>

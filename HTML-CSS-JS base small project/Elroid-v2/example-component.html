@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Elroid Example</title>
+  <script src="Elroid.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script>
+    const component = new ElroidComponent({
+      template: `
+        <div>
+          <h2>{{title}}</h2>
+          <p>Users, {{name.1}} and {{name.2}}!</p>
+        </div>
+      `,
+      data: {
+        name: {
+          1: "Hossein",
+          2: "Ali"
+        },
+        title: 'Custom Component'
+      },
+    });
+
+    document.getElementById('app').appendChild(component.el);
+  </script>
+</body>
+
+</html>

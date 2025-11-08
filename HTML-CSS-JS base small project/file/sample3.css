@@ -1,0 +1,7 @@
+div{
+    margin: 10px;;
+    display: inline-block;
+    width: 120px;
+    height: 200px;
+    background-color: rgb(10, 10, 10);
+}

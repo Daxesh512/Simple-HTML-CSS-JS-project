@@ -1,0 +1,9 @@
+input:in-range{
+    background-color: #17a992;
+    border: 5px solid #006776;
+}
+
+input:out-of-range{
+    background-color: #f4a898;
+    border: 5px solid #e62a5a;
+}

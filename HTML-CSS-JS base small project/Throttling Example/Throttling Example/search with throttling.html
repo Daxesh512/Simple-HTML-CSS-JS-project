@@ -1,0 +1,57 @@
+<!-- What is Throttling 
+in Javascript -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Search Bar Typing with Throttling</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+            input,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                font-size: 16px;
+            }
+            textarea {
+                height: 200px;
+                resize: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Live Search Typing (Throttled)</h2>
+        <input type="text" id="searchBar" placeholder="Type something..." />
+        <textarea id="output" readonly></textarea>
+
+        <script>
+            const searchBar = document.getElementById("searchBar");
+            const output = document.getElementById("output");
+
+            function throttle(fn, delay) {
+                let lastCall = 0;
+                return function (...args) {
+                    const now = Date.now();
+                    if (now - lastCall >= delay) {
+                        lastCall = now;
+                        fn.apply(this, args);
+                    }
+                };
+            }
+
+            function logInput() {
+                const text = searchBar.value;
+                output.value += text + "\n";
+                output.scrollTop = output.scrollHeight;
+            }
+
+            const throttleSearch = throttle(logInput, 1000);
+            searchBar.addEventListener("input", throttleSearch);
+        </script>
+    </body>
+</html>

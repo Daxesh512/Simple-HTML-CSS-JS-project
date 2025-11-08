@@ -1,0 +1,80 @@
+html, body {
+    height: 100%;
+    background-color: #111;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto Condensed';
+    text-align: center;
+}
+.container {
+    background: gainsboro;
+    width: 40vw;
+    height: 2.5em;
+    padding: 0.3em;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 50px;
+    box-sizing: border-box;
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.75) inset, 0 0 4px 0 rgba(0, 0, 0, 0.5);
+}
+.progress-bar {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 1px 3px rgba(255, 255, 255, 0.75) inset;
+    background: transparent;
+}
+.progress-bar:before {
+    border-radius: 50px;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3) inset, 0 0 5px 2px rgba(255, 255, 255, 0.8) inset;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+.progress-bar:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 2px;
+    width: 96%;
+    left: 50%;
+    margin-left: -48%;
+    border-radius: 20px;
+    height: 10px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85) 30%, transparent 120%);
+}
+.progress-bar .color {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(-90deg,#ff9d72,#a7c5eb,#54e346,#ffd66b,#fc8621);
+    clip-path: inset(0 100% 0 0);
+    transition: all 3s;
+}
+.progress-bar .color::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-image: repeating-linear-gradient(-45deg,transparent,transparent 10px,#000 10px,#000 20px);
+    opacity: 0.75;
+    mix-blend-mode: overlay;
+    border-radius: 50px;
+}
+.container:hover .progress-bar .color {
+    clip-path: inset(0 0 0 0);
+}
